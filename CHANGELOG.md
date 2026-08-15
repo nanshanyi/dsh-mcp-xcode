@@ -36,4 +36,4 @@ pnpm add file:/path/to/dsh-mcp-xcode     # 或 pnpm add github:nanshanyi/dsh-mcp
 # 重启 DSH
 ```
 
-前置:`xcrun mcp-server status` 显示 enabled + running;首次连接批准一次 Xcode agent 授权(DSH 为签名应用,批准长期有效)。
+前置:**Xcode 27 或更高**(headless MCP 自 27 beta 5 起内置);`xcrun mcp-server status` 显示 enabled + running;首次连接批准一次 Xcode agent 授权(DSH 为签名应用,批准长期有效)。

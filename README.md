@@ -13,7 +13,9 @@ DeepSeek Harness (DSH) 插件:把 **Xcode Headless MCP**(`xcrun mcpbridge`)桥�
 3. 工具调用转发为 `tools/call`,文本内容聚合进结果;截图自动存入 attachment 并通过 `deferContext` 注入下一轮模型上下文;
 4. 附带控制工具 `xcode_mcp_status`:查看连接状态 / 强制重连 / 查看 bridge stderr。
 
-## 前置条件(macOS + Xcode)
+## 前置条件(macOS + Xcode 27+)
+
+**要求 Xcode 27 或更高**(headless MCP 从 Xcode 27 beta 5 起内置 `xcrun mcp-server` / `mcpbridge`,更早版本没有这些命令;本项目在 27.0 27A5237l 上开发验证):
 
 ```bash
 # headless 服务需开启并运行
