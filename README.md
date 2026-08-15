@@ -68,7 +68,14 @@ config:
   excludeTools: ['StringCatalog*']               # 排除匹配的工具
 ```
 
-`includeTools`/`excludeTools` 按 Xcode 工具原名匹配,常用于给模型瘦身(54 个工具的 schema 描述会占用不少上下文)。
+`includeTools`/`excludeTools` 按 Xcode 工具**原名**匹配,常用于给模型瘦身(54 个工具的 schema 描述会占用不少上下文)。匹配规则:
+
+- 单个字符串或字符串数组都行
+- 模式是**锚定**的:`List` 不会命中 `XcodeListSchemes`,要写 `*List*`(子串)或 `XcodeList*`(前缀)
+- 支持 `*`(任意多字符)与 `?`(单个字符)通配;`[` `]` 等其它字符一律按**字面量**处理(不支持字符类)
+- **大小写敏感**;`excludeTools` 优先于 `includeTools`
+- `xcode_mcp_status` 是控制通道,**不受筛选影响**,永远注册
+- 任何模式都能安全编译(最坏情况是匹配不到任何工具);若筛选把全部工具排除,启动日志会告警,`xcode_mcp_status` 也会带 `WARNING` 提示,便于发现配置拼写错误
 
 ## 安全说明
 
