@@ -1,0 +1,31 @@
+{
+  "name": "dsh-mcp-xcode",
+  "description": "DSH plugin bridging agents to the Xcode headless MCP service (xcrun mcpbridge) over stdio JSON-RPC, exposing Xcode build/test/preview/simulator tools as agent tools. Zero runtime dependencies.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nanshanyi/dsh-mcp-xcode.git"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "mcp",
+    "xcode"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}
