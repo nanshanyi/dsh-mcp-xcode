@@ -4,6 +4,10 @@
 
 首个正式版本。
 
+### 修复
+
+- 桥进程退出后清理旧的 `xcode_*` 工具注册,避免重连时 `already registered` 冲突(`xcode_mcp_status` 常驻不受影响)
+
 ### 功能
 
 - 通过 stdio JSON-RPC 2.0 桥接 Xcode Headless MCP(`xcrun mcpbridge`)
