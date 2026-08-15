@@ -53,6 +53,23 @@ xcrun mcp-server start           # 若未运行
 
 排障:让 agent 调用 `xcode_mcp_status`(必要时带 `reconnect: true`)。
 
+**断桥自愈**:`xcrun mcpbridge` 进程崩溃/被终止后,`xcode_*` 工具保持注册,下一次调用会自动重连并同步注册(按名对账,不会 `already registered`),无需人工干预。
+
+## 配置
+
+全部可选,写在 patch 行的 `config` 下:
+
+```yaml
+config:
+  clientName: deepseek-harness   # 显示在 Xcode 授权弹窗里的客户端名
+  bridgePath: /usr/bin/xcrun     # 桥可执行文件
+  bridgeArgs: ['mcpbridge']      # 桥参数
+  includeTools: ['BuildProject', 'XcodeList*']   # 只注册匹配的工具(支持 * ? 通配)
+  excludeTools: ['StringCatalog*']               # 排除匹配的工具
+```
+
+`includeTools`/`excludeTools` 按 Xcode 工具原名匹配,常用于给模型瘦身(54 个工具的 schema 描述会占用不少上下文)。
+
 ## 安全说明
 
 - 连接走的是 Xcode 官方 headless 权限模型:签名应用一次批准长期有效,无需 `--unsafe-always-allow-all-agents`。

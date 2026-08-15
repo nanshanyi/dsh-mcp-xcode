@@ -7,6 +7,7 @@
 ### 修复
 
 - 桥进程退出后清理旧的 `xcode_*` 工具注册,避免重连时 `already registered` 冲突(`xcode_mcp_status` 常驻不受影响)
+- **断桥自愈**:桥崩溃后 `xcode_*` 工具保持注册,下一次调用自动重连;注册改为按名对账(补齐新增、注销消失),重连完全幂等
 
 ### 安装方式
 
@@ -14,6 +15,7 @@
 
 ### 功能
 
+- `includeTools` / `excludeTools` 配置(`*` `?` 通配),按需注册工具子集,节省模型上下文
 - 通过 stdio JSON-RPC 2.0 桥接 Xcode Headless MCP(`xcrun mcpbridge`)
 - 自动注册全部 Xcode MCP 工具为 `xcode_*` agent 工具(实测 Xcode 27 = 54 个),覆盖:
   - 工程创建/打开/编辑(`XcodeNewProject` / `XcodeOpenWorkspace` / `XcodeUpdate` / `XcodeWrite` 等)

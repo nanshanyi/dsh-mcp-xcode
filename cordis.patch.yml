@@ -15,3 +15,5 @@
       #   clientName: deepseek-harness   # 显示在 Xcode 授权弹窗里的客户端名
       #   bridgePath: /usr/bin/xcrun
       #   bridgeArgs: ['mcpbridge']
+      #   includeTools: ['BuildProject', 'XcodeList*']   # 只注册匹配的工具(支持 * ? 通配)
+      #   excludeTools: ['StringCatalog*']               # 排除匹配的工具
