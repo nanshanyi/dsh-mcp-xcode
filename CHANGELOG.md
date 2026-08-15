@@ -8,6 +8,10 @@
 
 - 桥进程退出后清理旧的 `xcode_*` 工具注册,避免重连时 `already registered` 冲突(`xcode_mcp_status` 常驻不受影响)
 
+### 安装方式
+
+- 支持官方插件通道:`dsh plugin --profile <name> add "github:nanshanyi/dsh-mcp-xcode#v1.0.0"`,通过 `dsh.bundle.patch` 自描述挂载,无需编辑 profile 文件
+
 ### 功能
 
 - 通过 stdio JSON-RPC 2.0 桥接 Xcode Headless MCP(`xcrun mcpbridge`)
